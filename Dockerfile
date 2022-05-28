@@ -1,7 +1,6 @@
-FROM node:alpine
-WORKDIR '/app'
-COPY package.json .
+FROM node
+WORKDIR /app
+COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-EXPOSE 4200
-CMD npm run start
+RUN npm run build --prod
